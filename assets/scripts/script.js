@@ -76,12 +76,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // parallax effect 
     window.addEventListener('scroll', function () {
-        const videoContainer = document.querySelector('.video-parallax');
-        const scrolled = window.scrollY;
-        // Adjust speed here (lower = slower)
-        const speed = 0.15;
+        if (window.innerWidth > 1024) {
+            const videoContainer = document.querySelector('.video-parallax');
+            if (!videoContainer) return;
 
-        // Move it vertically by modifying transform
-        videoContainer.style.transform = `translateY(${-scrolled * speed}%)`;
+            const scrolled = window.scrollY;
+            const speed = 0.15; // Adjust speed here (lower = slower)
+            videoContainer.style.transform = `translateY(${-scrolled * speed}%)`;
+        }
+    });
+
+
+
+    // tabs 
+    const tabs = document.querySelectorAll(".tab-item");
+    const price = document.getElementById("tab-price");
+  
+    const tabData = {
+      b2c: {
+        price: "2500 USD",
+      },
+      b2b: {
+        price: "3500 USD",
+      }
+    };
+  
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        const selected = tab.dataset.tab;
+        const data = tabData[selected];
+        price.textContent = data.price;
+      });
     });
 });
