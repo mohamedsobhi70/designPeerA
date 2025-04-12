@@ -135,4 +135,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
+    // header 
+    window.addEventListener('scroll', function () {
+        const header = document.getElementById('header');
+        if (window.scrollY > 400) {
+            header.classList.add('stky');
+        } else {
+            header.classList.remove('stky');
+        }
+    });
+
+
 });
