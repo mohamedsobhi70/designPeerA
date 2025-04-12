@@ -91,23 +91,48 @@ document.addEventListener("DOMContentLoaded", () => {
     // tabs 
     const tabs = document.querySelectorAll(".tab-item");
     const price = document.getElementById("tab-price");
-  
+
     const tabData = {
-      b2c: {
-        price: "2500 USD",
-      },
-      b2b: {
-        price: "3500 USD",
-      }
+        b2c: {
+            price: "2500 USD",
+        },
+        b2b: {
+            price: "3500 USD",
+        }
     };
-  
+
     tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        tabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
-        const selected = tab.dataset.tab;
-        const data = tabData[selected];
-        price.textContent = data.price;
-      });
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+            const selected = tab.dataset.tab;
+            const data = tabData[selected];
+            price.textContent = data.price;
+        });
     });
+
+
+    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+    const menuCloseBtn = document.querySelector(".menu-close-btn");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(link => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.remove("show");
+        });
+    });
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.add("show");
+        });
+    }
+
+    if (menuCloseBtn) {
+        menuCloseBtn.addEventListener("click", () => {
+            mobileMenu.classList.remove("show");
+        });
+    }
+
 });
