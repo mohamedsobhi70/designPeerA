@@ -179,12 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
         surveyLabel.textContent = surveyText;
 
         if (interviewCount > 25 || surveyCount > 1000) {
-            totalPriceEl.textContent = "call us now";
+            totalPriceEl.textContent = "Talk to us"
             return;
         }
 
         const total = (interviewCount * interview) + (surveyCount * survey) + recruitFee;
-        totalPriceEl.textContent = total === 0 ? "call us now" : `${total} USD`;
+        totalPriceEl.textContent = total === 0 ? "Talk to us" : `${total} USD`;
     }
 
     interviewRange.addEventListener("input", updateValues);
