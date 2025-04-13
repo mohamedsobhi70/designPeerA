@@ -88,28 +88,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // tabs 
-    const tabs = document.querySelectorAll(".tab-item");
-    const price = document.getElementById("tab-price");
+    // // tabs 
+    // const tabs = document.querySelectorAll(".tab-item");
+    // const price = document.getElementById("tab-price");
 
-    const tabData = {
-        b2c: {
-            price: "2500 USD",
-        },
-        b2b: {
-            price: "3500 USD",
-        }
-    };
+    // const tabData = {
+    //     b2c: {
+    //         price: "2500 USD",
+    //     },
+    //     b2b: {
+    //         price: "3500 USD",
+    //     }
+    // };
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
-            const selected = tab.dataset.tab;
-            const data = tabData[selected];
-            price.textContent = data.price;
-        });
-    });
+    // tabs.forEach(tab => {
+    //     tab.addEventListener("click", () => {
+    //         tabs.forEach(t => t.classList.remove("active"));
+    //         tab.classList.add("active");
+    //         const selected = tab.dataset.tab;
+    //         const data = tabData[selected];
+    //         price.textContent = data.price;
+    //     });
+    // });
 
 
     const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
@@ -147,4 +147,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    // pricing table 
+
+    const interviewRange = document.getElementById("interview-range");
+    const surveyRange = document.getElementById("survey-range");
+    const interviewLabel = document.getElementById("interview-label");
+    const surveyLabel = document.getElementById("survey-label");
+    const totalPriceEl = document.getElementById("tab-price");
+    const recruitCheckbox = document.getElementById("recruit-participants");
+    const tabItems = document.querySelectorAll(".tab-item");
+    let currentMode = "b2c";
+
+    function getPrices(mode) {
+        if (mode === "b2c") {
+            return { interview: 20, survey: 30 };
+        } else if (mode === "b2b") {
+            return { interview: 25, survey: 35 };
+        }
+    }
+
+    function updateValues() {
+        const interviewCount = parseInt(interviewRange.value);
+        const surveyCount = parseInt(surveyRange.value);
+        const recruitFee = recruitCheckbox.checked ? 1000 : 0;
+        const { interview, survey } = getPrices(currentMode);
+
+        const interviewText = interviewCount > 25 ? "I need +25 Interviews" : `I need ${interviewCount} Interviews`;
+        const surveyText = surveyCount > 1000 ? "I need +1000 Survey Response" : `I need ${surveyCount} Survey Response`;
+
+        interviewLabel.textContent = interviewText;
+        surveyLabel.textContent = surveyText;
+
+        if (interviewCount > 25 || surveyCount > 1000) {
+            totalPriceEl.textContent = "call us now";
+            return;
+        }
+
+        const total = (interviewCount * interview) + (surveyCount * survey) + recruitFee;
+        totalPriceEl.textContent = total === 0 ? "call us now" : `${total} USD`;
+    }
+
+    interviewRange.addEventListener("input", updateValues);
+    surveyRange.addEventListener("input", updateValues);
+    recruitCheckbox.addEventListener("change", updateValues);
+
+    tabItems.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabItems.forEach(t => t.classList.remove("active", "bg-white", "text-[#444CE7]", "font-semibold"));
+            tab.classList.add("active", "bg-white", "text-[#444CE7]", "font-semibold");
+            currentMode = tab.dataset.tab;
+            updateValues();
+        });
+    });
+
+    updateValues();
 });

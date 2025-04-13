@@ -43,9 +43,20 @@
                         </li>
                         <li>
                             <a class="nav-link" href="#">Pear AI
-                                <video autoplay loop muted width="20" height="20">
-                                    <source src="assets/images/1.mp4" type="video/mp4">
-                                </video>
+                                <div class="relative size-5 overflow-hidden rounded-full">
+                                    <div class="radial-circle"></div>
+                                    <div
+                                        class="circle-container-2 relative opacity-80 size-full rounded-full blur-[5px] animate-[slowspin_155s_linear_infinite]">
+                                        <div class="orbit absolute size-full">
+                                            <div class="ball blue top-1/2 left-1/2"></div>
+                                            <div class="ball red top-1/2 left-1/2"></div>
+                                            <div class="ball pink left-1/2"></div>
+                                            <div class="ball blueviolet left-1/2"></div>
+                                            <div class="ball yellow top-1/2 left-1/2"></div>
+                                            <div class="ball green left-1/2"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                     </ul>
@@ -69,19 +80,17 @@
                     </video>
                 </div> -->
                 <div
-                    class=" video-parallax absolute top-0 end-0  lg:top-1/2 -translate-y-1/2 lg:end-[90%] translate-x-1/2 lg:translate-x-0 size-[330px] lg:size-[500px] overflow-hidden rounded-full">
+                    class="video-parallax absolute top-0 end-0  lg:top-1/2 -translate-y-1/2 lg:end-[90%] translate-x-1/2 lg:translate-x-0 size-[330px] lg:size-[500px] overflow-hidden rounded-full">
                     <div class="radial-circle"></div>
-                    <div class="opacity-80 size-full ">
-                        <div
-                            class="circle-container relative w-full h-full rounded-full blur-[55px] animate-[slowspin_155s_linear_infinite]">
-                            <div class="orbit absolute w-full h-full">
-                                <div class="ball blue top-1/2 left-1/2"></div>
-                                <div class="ball red top-1/2 left-1/2"></div>
-                                <div class="ball pink left-1/2"></div>
-                                <div class="ball blueviolet left-1/2"></div>
-                                <div class="ball yellow top-1/2 left-1/2"></div>
-                                <div class="ball green left-1/2"></div>
-                            </div>
+                    <div
+                        class="circle-container opacity-80 size-full relative rounded-full blur-[55px] animate-[slowspin_155s_linear_infinite]">
+                        <div class="orbit absolute size-full">
+                            <div class="ball blue top-1/2 left-1/2"></div>
+                            <div class="ball red top-1/2 left-1/2"></div>
+                            <div class="ball pink left-1/2"></div>
+                            <div class="ball blueviolet left-1/2"></div>
+                            <div class="ball yellow top-1/2 left-1/2"></div>
+                            <div class="ball green left-1/2"></div>
                         </div>
                     </div>
                 </div>
@@ -317,13 +326,74 @@
                 ">
                     <div class="rounded-full bg-[#EFF4FF] p-2.5">
                         <div class="grid grid-cols-2 gap-4">
-                            <span class="tab-item active" data-tab="b2c">B2C</span>
-                            <span class="tab-item" data-tab="b2b">B2B</span>
+                            <span class="tab-item active cursor-pointer px-4 py-2 rounded-full bg-white text-[#444CE7]"
+                                data-tab="b2c">B2C</span>
+                            <span class="tab-item cursor-pointer px-4 py-2 rounded-full text-[#444CE7]"
+                                data-tab="b2b">B2B</span>
                         </div>
                     </div>
 
-                    <div id="tab-content" class="flex flex-col gap-9">
-                        <img src="assets/images/b2c.svg" width="442" height="258" alt="b2c" class="w-full">
+                    <div id="price-content" class="flex flex-col gap-9">
+                        <div class="flex flex-col gap-6">
+                            <div>
+                                <h3 id="interview-label" class="mb-3 tabs-xl text-[#181D27] font-medium">
+                                    I need 15 Interviews
+                                </h3>
+                                <input id="interview-range" type="range" min="0" max="30" value="5"
+                                    class="range w-full z-10" step="1" />
+                                <div class="flex justify-between -mt-4 text-[#EAECF5] -z-10">
+                                    <span></span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span></span>
+                                </div>
+                                <div class="flex justify-between mt-1 text-[#535862]">
+                                    <span></span>
+                                    <span>5</span>
+                                    <span>10</span>
+                                    <span>15</span>
+                                    <span>20</span>
+                                    <span>+25</span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 id="survey-label" class="mb-3 tabs-xl text-[#181D27] font-medium">
+                                    I need 250 Survey Response
+                                </h3>
+                                <input id="survey-range" type="range" min="0" max="1200" value="250"
+                                    class="range w-full z-10" step="1" />
+                                <div class="flex justify-between -mt-4 text-[#EAECF5] -z-10">
+                                    <span></span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span>|</span>
+                                    <span></span>
+                                </div>
+                                <div class="flex justify-between mt-1 text-[#535862]">
+                                    <span></span>
+                                    <span>200</span>
+                                    <span>400</span>
+                                    <span>600</span>
+                                    <span>800</span>
+                                    <span>+1000</span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" name="recruit-participants" id="recruit-participants"
+                                    class="checkbox checkbox-xs size-[22px] rounded-full checked:bg-[#444CE7] p-1">
+                                <label for="recruit-participants"
+                                    class="cursor-pointer font-medium text-[#181D27]">Recruit participants for
+                                    me</label>
+                            </div>
+                        </div>
+
                         <div class="flex items-center md:justify-between flex-col md:flex-row gap-4">
                             <span id="tab-price" class="text-[#181D27] text-4xl font-Guton font-semibold">
                                 2500 USD
