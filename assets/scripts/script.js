@@ -120,18 +120,22 @@ document.addEventListener("DOMContentLoaded", () => {
     navLink.forEach(link => {
         link.addEventListener("click", () => {
             mobileMenu.classList.remove("show");
+            document.querySelector("body").style.overflow = "auto";
         });
     });
 
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener("click", () => {
             mobileMenu.classList.add("show");
+            document.querySelector("body").style.overflow = "hidden";
+
         });
     }
 
     if (menuCloseBtn) {
         menuCloseBtn.addEventListener("click", () => {
             mobileMenu.classList.remove("show");
+            document.querySelector("body").style.overflow = "auto";
         });
     }
 
